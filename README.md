@@ -58,7 +58,7 @@ To fetch the  `doc-brown` or `marty-mcfly` branches, run the following commands 
 * `git checkout -t origin/doc-brown`
 * `git checkout -t origin/marty-mcfly`
 
-This creates a new branch on your computer that matches the`doc-brown` and `marty-mcfly` branches on GitHub. Now your output should include both branches. But don't take this readme's word for it: run `git branch` again to double check. The output should look like this:
+This creates a new branch on your computer that matches the`doc-brown` and `marty-mcfly` branches on GitHub. Now your output should include both branches. But don't take this README's word for it: run `git branch` again to double check. The output should look like this:
 
 ```bash
 $ git branch
@@ -77,7 +77,7 @@ Remember, checkout allows you to switch between branches that are on your local 
 
 - `git checkout master`
 
-You should now be in the `master` branch. Remember, you can confirm you're on the master banch if it's starred and highlighted when you run `git branch`:
+You should now be in the `master` branch. Remember, you can confirm you're on the master branch if it's starred and highlighted when you run `git branch`:
 
 ```bash
 $ git branch
