@@ -7,9 +7,15 @@
 
 ## Introduction
 
-We've discussed how merge conflicts happen and how we can solve them. Let's work through a scenario using characters from [Back to the Future](https://www.imdb.com/title/tt0088763/) to resolve some issues with conflicting Git histories! 
+We've discussed how merge conflicts happen and how we can solve them. Let's work
+through a scenario using characters from [Back to the Future][] to resolve some
+issues with conflicting Git histories!
 
-Marty McFly and Doc Brown just finished their student profiles for Flatiron School. Now they need to merge their profiles into the `master` branch, so that they'll have a completed profile page.
+[Back to the Future]: https://www.imdb.com/title/tt0088763/
+
+Marty McFly and Doc Brown just finished their student profiles for Flatiron
+School. Now they need to merge their profiles into the `master` branch, so that
+they'll have a completed profile page.
 
 __This is what we will be working towards:__
 
@@ -17,19 +23,23 @@ __This is what we will be working towards:__
 
 ## Demonstrate Steps for Merge Conflict Resolution
 
-On the `master` branch, there is a placeholder profile in place. The `index.html` page on that branch looks like this:
+On the `master` branch, there is a placeholder profile in place. The
+`index.html` page on that branch looks like this:
 
 ![avatar-placeholder-master-branch](https://s3-us-west-2.amazonaws.com/web-dev-readme-photos/git-merge-conflicts/master-branch)
 
-Doc's finished profile is in the `doc-brown` branch. The index page on his branch looks like this:
+Doc's finished profile is in the `doc-brown` branch. The index page on his
+branch looks like this:
 
 ![doc-browns-branch](https://s3-us-west-2.amazonaws.com/web-dev-readme-photos/git-merge-conflicts/doc-brown-branch)
 
-Meanwhile, Marty's finished profile is stored in the `marty-mcfly` branch. His index page on his branch looks like this:
+Meanwhile, Marty's finished profile is stored in the `marty-mcfly` branch. His
+index page on his branch looks like this:
 
 ![marty-mcflys-branch](https://s3-us-west-2.amazonaws.com/web-dev-readme-photos/git-merge-conflicts/marty-mcfly-branch)
 
-You are going to merge both branches onto the master branch and resolve the merge conflicts when needed.
+You are going to merge both branches onto the master branch and resolve the
+merge conflicts when needed.
 
 To accomplish this, you're going to be following six steps, listed below:
 
@@ -44,9 +54,10 @@ To accomplish this, you're going to be following six steps, listed below:
 
 Remember to fork then clone down this repo. Then change directories into it using:
 
-* `cd git-merge-conflicts-< your semester name >`
+- `cd git-merge-conflicts-< your semester name >`
 
-The first step is to see how many branches you have locally. Run `git branch` from your terminal to see all of the branches. The output should look like this:
+The first step is to see how many branches you have locally. Run `git branch`
+from your terminal to see all of the branches. The output should look like this:
 
 ```bash
 $ git branch
@@ -55,10 +66,13 @@ $ git branch
 
 To fetch the  `doc-brown` or `marty-mcfly` branches, run the following commands in order:
 
-* `git checkout -t origin/doc-brown`
-* `git checkout -t origin/marty-mcfly`
+- `git checkout -t origin/doc-brown`
+- `git checkout -t origin/marty-mcfly`
 
-This creates a new branch on your computer that matches the`doc-brown` and `marty-mcfly` branches on GitHub. Now your output should include both branches. But don't take this README's word for it: run `git branch` again to double check. The output should look like this:
+This creates a new branch on your computer that matches the `doc-brown` and
+`marty-mcfly` branches on GitHub. Now your output should include both branches.
+But don't take this README's word for it: run `git branch` again to double
+check. The output should look like this:
 
 ```bash
 $ git branch
@@ -69,15 +83,19 @@ $ git branch
 
 If you don't have all three branches, ask a teammate for help.
 
-As you can tell, the marty-mcfly branch is starred and highlighted. This is Git's way of telling you which branch you're on. Therefore, you're on the marty-mcfly branch.
+As you can tell, the marty-mcfly branch is starred and highlighted. This is
+Git's way of telling you which branch you're on. Therefore, you're on the
+marty-mcfly branch.
 
 ### Step 2: Navigate Into The `master` Branch
 
-Remember, checkout allows you to switch between branches that are on your local machine. It's time to check out the `master` branch:
+Remember, checkout allows you to switch between branches that are on your local
+machine. It's time to check out the `master` branch:
 
 - `git checkout master`
 
-You should now be in the `master` branch. Remember, you can confirm you're on the master branch if it's starred and highlighted when you run `git branch`:
+You should now be in the `master` branch. Remember, you can confirm you're on
+the master branch if it's starred and highlighted when you run `git branch`:
 
 ```bash
 $ git branch
@@ -86,13 +104,19 @@ $ git branch
 * master
 ```
 
-From the master branch, run `open index.html` from your terminal, you should see a web page with just a placeholder avatar. Marty and Doc should not be there.
+From the `master` branch, if you are using the in-browser IDE, you can open the
+index page and take a look by running `httpserver` (or, if you are using a local
+environment, open the file by running `open index.html`). You should see a web
+page with just a placeholder avatar. Marty and Doc should not be there.
 
 ### Step 3: Merge!
 
-You're going to add both the doc-brown branch and the marty-mcfly branch to the master branch using merge. Merge the `doc-brown` branch first by running `git merge doc-brown -m "merge doc brown"` in the terminal.
+You're going to add both the doc-brown branch and the marty-mcfly branch to the
+master branch using merge. Merge the `doc-brown` branch first by running `git
+merge doc-brown -m "merge doc brown"` in the terminal.
 
-When you merge `doc-brown` into your `master` branch, your terminal should print a readout that looks something like this:
+When you merge `doc-brown` into your `master` branch, your terminal should print
+a readout that looks something like this:
 
 ```bash
 Updating 7d220f6..bb73c64
@@ -109,17 +133,22 @@ Fast-forward
  delete mode 100644 img/students/student_name_profile.jpg
  ```
 
-This readout confirms that you've merged all of Doc Brown's profile information into the `master` branch. Take a look at the index page by again running `open index.html` in the terminal. It's important to keep looking at `index.html` to make sure that it looks exactly how you want it to look.
+This readout confirms that you've merged all of Doc Brown's profile information
+into the `master` branch. Take a look at the index page by again running `open
+index.html` in the terminal. It's important to keep looking at `index.html` to
+make sure that it looks exactly how you want it to look.
 
 __The `index.html` page should look like this:__
 
 ![Doc Brown Merge](https://s3-us-west-2.amazonaws.com/web-dev-readme-photos/git-merge-conflicts/add-doc-brown)
 
-Now try merging in Marty McFly's profile information into the master branch. You probably already are, but ensure that you are currently on your `master` branch (type `git branch`). Then run `git merge marty-mcfly`.
+Now try merging in Marty McFly's profile information into the master branch. You
+probably already are, but ensure that you are currently on your `master` branch
+(type `git branch`). Then run `git merge marty-mcfly`.
 
 Yikes! Now we have a merge conflict!
 
-```
+```text
 Auto-merging index.html
 CONFLICT (content): Merge conflict in index.html
 Automatic merge failed; fix conflicts and then commit the result.
@@ -131,7 +160,8 @@ __This is what `index.html` should look like with the merge conflict:__
 
 ### Step 4: Fix the Conflicts
 
-Open up the `index.html` file. Scroll down to around line 114 and 137. You should see something that looks like this:
+Open up the `index.html` file. Scroll down to around line 114 and 137. You
+should see something that looks like this:
 
 ```html
 <<<<<<< HEAD
@@ -162,15 +192,19 @@ Open up the `index.html` file. Scroll down to around line 114 and 137. You shoul
 
 #### Identify the Commits to Merge
 
-Remember, Git does its best to merge the code, but sometimes it just doesn't work. You need to complete the merge yourself by manually adjusting the code. Git gives you a few hints to help us out:
+Remember, Git does its best to merge the code, but sometimes it just doesn't
+work. You need to complete the merge yourself by manually adjusting the code.
+Git gives you a few hints to help us out:
 
-* `<<<<<<< HEAD` - the beginning of the original branch (`master`)
-* `=======` - the end of the original branch/the beginning of the branch being merged in (`marty-mcfly`)
-* `>>>>>>> marty-mcfly` - the end of the new branch ( `marty-mcfly`)
+- `<<<<<<< HEAD` - the beginning of the original branch (`master`)
+- `=======` - the end of the original branch/the beginning of the branch being merged in (`marty-mcfly`)
+- `>>>>>>> marty-mcfly` - the end of the new branch ( `marty-mcfly`)
 
-Take your time and shift the code around, separating the `MARTY MCFLY` and `DOC BROWN` code blocks. Use the markers from git as a guide.
+Take your time and shift the code around, separating the `MARTY MCFLY` and `DOC
+BROWN` code blocks. Use the markers from git as a guide.
 
-**Hint:** You can also use the HTML tags as guides. If one section ends with an opening `<a>` tag, look for the closing `</a>` tag in the next section.
+**Hint:** You can also use the HTML tags as guides. If one section ends with an
+opening `<a>` tag, look for the closing `</a>` tag in the next section.
 
 When you're done the code should look something like this:
 
@@ -202,23 +236,28 @@ When you're done the code should look something like this:
 <!-- End DOC BROWN -->
  ```
 
-You can open the index page by running `open index.html`. The page should look like the picture at the very top of this readme.
+Open the page with `httpserver` (or `open index.html`). The page should look
+like the picture at the very top of this readme.
 
 If everything is looking good, we're ready to commit the changes before moving on.
+
 - run `git add .` to stage all changes made in `index.html`
 - run `git commit -am "merge marty and doc index pages"` to commit, or finalize, these changes
 
 ### Step 5: Confirm the Changes Are Correct
 
-Almost done! The next and last step is to confirm that the `master` branch has everything we need.
+Almost done! The next and last step is to confirm that the `master` branch has
+everything we need.
 
-Confirm that `index.html` in the `master` branch has the following for both Doc Brown and Marty McFly:
+Confirm that `index.html` in the `master` branch has the following for both Doc
+Brown and Marty McFly:
 
 - profile images
 - profile names
 - descriptions
 
-Once you have that, make sure you're still on the master branch. Now delete the `doc-brown` and `marty-mcfly` branches:
+Once you have that, make sure you're still on the master branch. Now delete the
+`doc-brown` and `marty-mcfly` branches:
 
 - run `git branch -D doc-brown` to delete the `doc-brown` branch
 - run `git branch -D marty-mcfly` to delete, you guessed it, the `marty-mcfly` branch
@@ -229,19 +268,24 @@ That's it! Open up `index.html` in your browser to see your beautiful work!
 
 ### Step 6: Wrap Up
 
-Remember, while your computer has these updates, GitHub has no idea that you made them. Remember to push up your changes to your remote repo and to submit a pull request!
+Remember, while your computer has these updates, GitHub has no idea that you
+made them. Remember to push up your changes to your remote repo and to submit a
+pull request!
 
 From the master branch, run:
 
-* `git push origin master`
-* Go to your forked repo (the url will look something like `http://github.com/< your GitHub username>/git-merge-conflicts-<your semester name>`, but you can also get there by going to your GitHub account and clicking on `repos`)
-* Click on the green pull request button, add a title, a description if you'd like, and click "submit pull request"
+- `git push origin master`
+- Go to your forked repo (the url will look something like 
+  `http://github.com/< your GitHub username>/git-merge-conflicts-<your semester name>`, 
+  but you can also get there by going to your GitHub account and clicking on `repos`)
+- Click on the green pull request button, add a title, a description if you'd
+  like, and click "submit pull request"
 
 ## Conclusion
 
 Congrats on fixing your first merge conflict!
 
 ## Resources
+
 - [Git Branching - Basic Branching and Merging](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging)
 - [Stack Overflow - Best (and safest) way to merge a git branch into master](http://stackoverflow.com/questions/5601931/best-and-safest-way-to-merge-a-git-branch-into-master)
-
