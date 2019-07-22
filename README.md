@@ -14,7 +14,7 @@ issues with conflicting Git histories!
 [Back to the Future]: https://www.imdb.com/title/tt0088763/
 
 Marty McFly and Doc Brown just finished their student profiles for Flatiron
-School. Now they need to merge their profiles into the `master` branch, so that
+School. Now they need to merge their profiles into the `master` branch so that
 they'll have a completed profile page.
 
 __This is what we will be working towards:__
@@ -39,22 +39,25 @@ index page on his branch looks like this:
 ![marty-mcflys-branch](https://s3-us-west-2.amazonaws.com/web-dev-readme-photos/git-merge-conflicts/marty-mcfly-branch)
 
 You are going to merge both branches onto the master branch and resolve the
-merge conflicts when needed.
+merge conflicts.
 
 To accomplish this, you're going to be following six steps, listed below:
 
 1. Make sure you have all three branches
 2. Switch to the master branch
-3. Merge Doc's branch into the master branch, then merge Marty's branch in
+3. Merge Doc's branch into the master branch. This will merge "cleanly"
+4. Merge Marty's branch in. This ***will not*** merge cleanly due to a "merge
+   conflict"
 4. Fix the merge conflict
 5. Delete Doc and Marty's branches on your computer
-6. Push up your work and submit a pull request
+6. Verify that Doc and Marty's branches have been integrated to your local
+   `master` branch.
 
 ### Step 1: Confirm You Have Both Branches
 
 Remember to fork then clone down this repo. Then change directories into it using:
 
-- `cd git-merge-conflicts-< your semester name >`
+- `cd git-merge-conflicts-< your cohort identifier >`
 
 The first step is to see how many branches you have locally. Run `git branch`
 from your terminal to see all of the branches. The output should look like this:
@@ -64,15 +67,15 @@ $ git branch
 * master
 ```
 
-To fetch the  `doc-brown` or `marty-mcfly` branches, run the following commands in order:
+To fetch the  `doc-brown` or `marty-mcfly` remote branches, run the following
+commands in order:
 
 - `git checkout -t origin/doc-brown`
 - `git checkout -t origin/marty-mcfly`
 
-This creates a new branch on your computer that matches the `doc-brown` and
-`marty-mcfly` branches on GitHub. Now your output should include both branches.
-But don't take this README's word for it: run `git branch` again to double
-check. The output should look like this:
+This creates a local tracking-branch on your computer that matches the
+`doc-brown` and `marty-mcfly` branches on GitHub. Let's verify this by
+re-running the `git branch` command. The output should look like this:
 
 ```bash
 $ git branch
@@ -81,11 +84,13 @@ $ git branch
   master
 ```
 
-If you don't have all three branches, ask a teammate for help.
+If you don't have all three branches, get help.
 
-As you can tell, the marty-mcfly branch is starred and highlighted. This is
-Git's way of telling you which branch you're on. Therefore, you're on the
-marty-mcfly branch.
+As you can see, the `marty-mcfly` branch is starred and highlighted. This is
+Git's way of telling you which branch you're on. Git "put" us "on" this branch
+when we issued that last `checkout` command. Therefore, you're on the
+`marty-mcfly` branch. Since we want to merge _into_ `master` we need to "get"
+back "on" it.
 
 ### Step 2: Navigate Into The `master` Branch
 
@@ -111,9 +116,15 @@ page with just a placeholder avatar. Marty and Doc should not be there.
 
 ### Step 3: Merge!
 
-You're going to add both the doc-brown branch and the marty-mcfly branch to the
-master branch using merge. Merge the `doc-brown` branch first by running `git
-merge doc-brown -m "merge doc brown"` in the terminal.
+You're going to add both the `doc-brown` branch and the `marty-mcfly` branch to
+the master branch using `git merge`. Merge the `doc-brown` branch first by running:
+
+```bash
+git merge doc-brown -m "merge doc brown"
+```
+
+Here, we're saying: "Integrate the differences between `master` and `doc-brown`
+_back_ into `master`."
 
 When you merge `doc-brown` into your `master` branch, your terminal should print
 a readout that looks something like this:
@@ -144,15 +155,31 @@ __The `index.html` page should look like this:__
 
 Now try merging in Marty McFly's profile information into the master branch. You
 probably already are, but ensure that you are currently on your `master` branch
-(type `git branch`). Then run `git merge marty-mcfly`.
+(type `git branch`). Then run:
 
-Yikes! Now we have a merge conflict!
+```bash
+git merge marty-mcfly -m "Merge marty mcfly"
+```
+
+Here, we're saying: "Integrate the differences between `master` and
+`marty-mcfly` _back_ into `master`."
 
 ```text
 Auto-merging index.html
 CONFLICT (content): Merge conflict in index.html
 Automatic merge failed; fix conflicts and then commit the result.
 ```
+
+Yikes! Now we have a merge conflict! Why did this happen? Well, both Doc Brown
+and Marty McFly took `master` at the same moment in the Git history. This idea
+has become commonplace in sci-fi films but they "branched" reality. They
+started "two" timelines from that point. In those separate "timelines," they
+changed the same thing. We merged in the changes from Doc Brown's timeline to
+`master` but now we're trying to merge in Marty McFly's _same changes_ from
+_his_ timeline. Git needs us to help it decide how to integrate these two
+timelines. That's what all merge conflicts are: Git telling us it's not sure
+how to move forward and it needs our help! Nobody said reweaving the fabric of
+time would be easy!
 
 __This is what `index.html` should look like with the merge conflict:__
 
@@ -269,21 +296,20 @@ That's it! Open up `index.html` in your browser to see your beautiful work!
 ### Step 6: Wrap Up
 
 Remember, while your computer has these updates, GitHub has no idea that you
-made them. Remember to push up your changes to your remote repo and to submit a
-pull request!
-
-From the master branch, run:
-
-- `git push origin master`
-- Go to your forked repo (the url will look something like 
-  `http://github.com/< your GitHub username>/git-merge-conflicts-<your semester name>`, 
-  but you can also get there by going to your GitHub account and clicking on `repos`)
-- Click on the green pull request button, add a title, a description if you'd
-  like, and click "submit pull request"
+made them. These are all local. Typically, the next step would be to create a
+branch off of your _local_ master with `git checkout -b wip-marty-and-doc-added
+master`, push that branch with, `git push origin wip-marty-and-doc-added` and
+then create a pull request to merge `wip-marty-and-doc-added` to the remote
+`master` branch.
 
 ## Conclusion
 
-Congrats on fixing your first merge conflict!
+Congrats on fixing your first merge conflict! This is a topic that takes a
+while to get a hang of. As you edit more text you'll learn to be better at
+understanding why Git is asking you for help. It's an intermediate-level Git
+skill, so if it's not easy right now, that's OK. The important thing to
+understand is that developers can split timelines and decide to edit the same
+material so that Git needs our help to integrate things during merges.
 
 ## Resources
 
