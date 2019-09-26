@@ -5,6 +5,17 @@
 - Demonstrate steps for merge conflict resolution
 - Execute resolving a merge conflict
 
+## Important Update
+
+In order to complete this lab, please be sure to clone it from the following source:
+
+https://github.com/learn-co-curriculum/git-workflow-merge-conflicts-lab
+
+This is required because our teaching system works to make sure we don't deploy
+"broken git repositories" to our learners. But we're trying to teach you to work with...
+broken git repositories 😂. Cloning from the URL above, into a new directory is the
+best way to complete this lab.
+
 ## Introduction
 
 We've discussed how merge conflicts happen and how we can solve them. Let's work
