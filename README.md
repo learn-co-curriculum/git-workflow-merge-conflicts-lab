@@ -307,11 +307,13 @@ That's it! Open up `index.html` in your browser to see your beautiful work!
 ### Step 6: Wrap Up
 
 Remember, while your computer has these updates, GitHub has no idea that you
-made them. These are all local. Typically, the next step would be to create a
-branch off of your _local_ master with `git checkout -b wip-marty-and-doc-added
-master`, push that branch with, `git push origin wip-marty-and-doc-added` and
-then create a pull request to merge `wip-marty-and-doc-added` to the remote
-`master` branch.
+made them. These are all local. 
+
+Typically, the next step would be to create a local branch, push that 
+branch to the remote, and then create a pull request to merge your branch 
+into the remote `master` branch.
+
+**In this lab, you do not need to create a pull request.**
 
 ## Conclusion
 
