@@ -66,8 +66,8 @@ To accomplish this, you're going to be following six steps, listed below:
 
 ### Step 1: Confirm You Have Both Branches
 
-Remember to fork then clone down the repo: 
-https://github.com/learn-co-curriculum/git-workflow-merge-conflicts-lab
+Remember to fork then clone down this version of the repo: 
+https://github.com/learn-co-curriculum/git-workflow-merge-conflicts-lab. 
 Then change directories into it using:
 
 - `cd git-workflow-merge-conflicts-lab`
