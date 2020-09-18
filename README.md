@@ -66,9 +66,11 @@ To accomplish this, you're going to be following six steps, listed below:
 
 ### Step 1: Confirm You Have Both Branches
 
-Remember to fork then clone down this repo. Then change directories into it using:
+Remember to fork then clone down this version of the repo: 
+https://github.com/learn-co-curriculum/git-workflow-merge-conflicts-lab. 
+Then change directories into it using:
 
-- `cd git-merge-conflicts-< your cohort identifier >`
+- `cd git-workflow-merge-conflicts-lab`
 
 The first step is to see how many branches you have locally. Run `git branch`
 from your terminal to see all of the branches. The output should look like this:
